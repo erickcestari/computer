@@ -8,7 +8,9 @@
 </svelte:head>
 
 <section>
-	<Window />
+	<Window>
+		<p>hello</p>
+	</Window>
 </section>
 
 <style>

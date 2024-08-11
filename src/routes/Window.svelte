@@ -141,7 +141,7 @@
   class:resize-bottom-right={resizingEdge === "bottom-right"}
   style="border-top: {grabArea}px solid rgba(0, 0, 0, 0.8);"
 >
-  <p>hello window</p>
+  <slot />
 </div>
 
 <style>
