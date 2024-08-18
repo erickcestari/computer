@@ -117,6 +117,10 @@
     resizingEdge = null;
   }
 
+  function closeWindow() {
+    windowElement.style.display = "none";
+  }
+
   onMount(() => {
     windowElement.addEventListener("mousedown", onMouseDown);
     document.addEventListener("mousemove", onMouseMove);
@@ -131,17 +135,21 @@
 </script>
 
 <div
-  bind:this={windowElement}
   class="window"
+  bind:this={windowElement}
   class:drag-cursor={isDragging}
   class:resize-cursor={isResizing}
   class:resize-top-left={resizingEdge === "top-left"}
   class:resize-top-right={resizingEdge === "top-right"}
   class:resize-bottom-left={resizingEdge === "bottom-left"}
   class:resize-bottom-right={resizingEdge === "bottom-right"}
-  style="border-top: {grabArea}px solid rgba(0, 0, 0, 0.8);"
 >
-  <slot />
+  <div class="bar">
+    <button class="close-button" on:click={closeWindow}>x</button>
+  </div>
+  <div class="content">
+    <slot />
+  </div>
 </div>
 
 <style>
@@ -149,16 +157,35 @@
     position: absolute;
     width: 800px;
     height: 400px;
+  }
+
+  .bar {
+    height: 30px;
+    background-color: black;
+    user-select: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .content {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
   }
 
-  .window {
-    max-width: 100%;
-    max-height: 100%;
+  .close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
   }
 
   .drag-cursor {
