@@ -15,17 +15,26 @@
 	.app {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 		min-height: 100vh;
+		align-items: center;
+		background-color: white;
 	}
 
 	main {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		width: 75%;
+		max-width: 100vh;
+		height: auto;
+		max-height: 100vh;
+		aspect-ratio: 4 / 3;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-image: url("../lib/images/background.png");
 		box-sizing: border-box;
+		margin: 0 auto;
 	}
 </style>
