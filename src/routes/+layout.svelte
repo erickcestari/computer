@@ -23,6 +23,7 @@
   }
 
   main {
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
     justify-content: center;

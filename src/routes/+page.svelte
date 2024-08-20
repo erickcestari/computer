@@ -1,5 +1,6 @@
 <script>
 	import Window from "./Window.svelte";
+	import Footer from "./Footer.svelte";
 </script>
 
 <svelte:head>
@@ -10,6 +11,7 @@
 <Window>
 	<p>hello</p>
 </Window>
+<Footer />
 
 <style>
 </style>
