@@ -1,5 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { createEventDispatcher } from "svelte";
+  export let desktopElement: HTMLElement;
+
+  const dispatch = createEventDispatcher();
 
   let isDragging = false;
   let isResizing = false;
@@ -75,9 +79,22 @@
 
   function onMouseMove(e: MouseEvent) {
     if (isDragging) {
-      windowElement.style.left = `${e.clientX - offsetX}px`;
-      windowElement.style.top = `${e.clientY - offsetY}px`;
+      const desktopRect = desktopElement.getBoundingClientRect();
+      const windowRect = windowElement.getBoundingClientRect();
+      const newLeft = e.clientX - offsetX;
+      const newTop = e.clientY - offsetY;
+
+      if (
+        newLeft >= desktopRect.left &&
+        newLeft + windowRect.width <= desktopRect.right &&
+        newTop >= desktopRect.top &&
+        newTop + windowRect.height <= desktopRect.bottom
+      ) {
+        windowElement.style.left = `${newLeft}px`;
+        windowElement.style.top = `${newTop}px`;
+      }
     }
+
     if (isResizing && resizingEdge) {
       let newWidth, newHeight;
 
@@ -106,6 +123,17 @@
           return;
       }
 
+      // Constrain resizing within the desktop bounds
+      const desktopRect = desktopElement.getBoundingClientRect();
+      newWidth = Math.min(
+        newWidth,
+        desktopRect.right - windowElement.offsetLeft,
+      );
+      newHeight = Math.min(
+        newHeight,
+        desktopRect.bottom - windowElement.offsetTop,
+      );
+
       windowElement.style.width = `${newWidth}px`;
       windowElement.style.height = `${newHeight}px`;
     }
@@ -118,13 +146,15 @@
   }
 
   function closeWindow() {
-    windowElement.style.display = "none";
+    dispatch("close");
   }
 
   onMount(() => {
     windowElement.addEventListener("mousedown", onMouseDown);
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
+    windowElement.style.left = `${Math.random() * (desktopElement.clientWidth - 200) + 200}px`;
+    windowElement.style.top = `${Math.random() * (desktopElement.clientHeight - 250)}px`;
 
     return () => {
       windowElement.removeEventListener("mousedown", onMouseDown);
@@ -145,6 +175,9 @@
   class:resize-bottom-right={resizingEdge === "bottom-right"}
 >
   <div class="bar">
+    <div>
+      <p>Paint</p>
+    </div>
     <button class="close-button" on:click={closeWindow}>x</button>
   </div>
   <div class="content">
@@ -168,14 +201,20 @@
     background: linear-gradient(
       0deg,
       rgba(10, 0, 171, 1) 41%,
-      rgba(8, 1, 120, 1) 52%,
-      rgba(221, 221, 221, 1) 72%,
-      rgba(0, 0, 0, 1) 90%
+      rgba(8, 1, 120, 1) 68%,
+      rgba(171, 171, 171, 1) 84%,
+      rgba(0, 0, 0, 1) 98%
     );
     user-select: none;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+  }
+
+  .bar p {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .content {
@@ -191,26 +230,26 @@
   }
 
   .close-button {
-    background: #00268e; /* Solid blue background */
-    border: 2px solid #ffffff; /* White top and left border */
-    border-right-color: #1f3a93; /* Darker blue right border */
-    border-bottom-color: #1f3a93; /* Darker blue bottom border */
-    color: white; /* White text */
-    font-size: 14px; /* Regular font size */
-    padding: 4px 6px; /* Padding for the button */
+    background: #00268e;
+    border: 2px solid #ffffff;
+    border-right-color: #1f3a93;
+    border-bottom-color: #1f3a93;
+    color: white;
+    font-size: 14px;
+    padding: 4px 6px;
     cursor: pointer;
-    font-family: "MS Sans Serif", Arial, sans-serif; /* Classic Windows font */
+    font-family: "MS Sans Serif", Arial, sans-serif;
     box-shadow:
       inset -1px -1px 0px 0px #808080,
-      inset 1px 1px 0px 0px #dfe0e1; /* Inner shadow for 3D effect */
+      inset 1px 1px 0px 0px #dfe0e1;
   }
 
   .close-button:active {
-    border-color: #1f3a93; /* Darker blue border on press */
+    border-color: #1f3a93;
     box-shadow:
       inset 1px 1px 0px 0px #808080,
-      inset -1px -1px 0px 0px #dfe0e1; /* Inverted shadow for pressed effect */
-    background: #3a5dc3; /* Darker blue background on press */
+      inset -1px -1px 0px 0px #dfe0e1;
+    background: #3a5dc3;
   }
 
   .drag-cursor {

@@ -1,6 +1,5 @@
 <script>
-	import Window from "./Window.svelte";
-	import Footer from "./Footer.svelte";
+	import Desktop from "./Desktop.svelte";
 </script>
 
 <svelte:head>
@@ -8,9 +7,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Window>
-	<p>hello</p>
-</Window>
+<Desktop />
 
 <style>
 </style>

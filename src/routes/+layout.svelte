@@ -5,10 +5,7 @@
 
 <div class="app">
   <Header />
-
-  <main>
-    <slot />
-  </main>
+  <slot />
 </div>
 
 <style>
@@ -20,19 +17,5 @@
     min-height: 100vh;
     align-items: center;
     background-color: black;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 133vh;
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url("../lib/images/background.png");
-    box-sizing: border-box;
-    margin: 0 auto;
   }
 </style>
