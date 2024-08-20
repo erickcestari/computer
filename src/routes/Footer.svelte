@@ -9,7 +9,7 @@
 <style>
   footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     left: 0;
     width: 100%;
     height: 40px;

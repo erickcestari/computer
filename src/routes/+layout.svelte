@@ -23,12 +23,11 @@
   }
 
   main {
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 134vh;
+    width: 133vh;
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: contain;

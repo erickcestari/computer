@@ -11,7 +11,6 @@
 <Window>
 	<p>hello</p>
 </Window>
-<Footer />
 
 <style>
 </style>

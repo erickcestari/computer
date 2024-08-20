@@ -155,13 +155,23 @@
 <style>
   .window {
     position: absolute;
-    width: 800px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
   }
 
   .bar {
-    height: 30px;
-    background-color: black;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 5px 5px 0 0;
+    background: rgb(10, 0, 171);
+    background: linear-gradient(
+      0deg,
+      rgba(10, 0, 171, 1) 41%,
+      rgba(8, 1, 120, 1) 52%,
+      rgba(221, 221, 221, 1) 72%,
+      rgba(0, 0, 0, 1) 90%
+    );
     user-select: none;
     display: flex;
     justify-content: flex-end;
@@ -169,6 +179,7 @@
   }
 
   .content {
+    border: 6px solid rgb(10, 0, 171);
     position: absolute;
     display: flex;
     justify-content: center;
@@ -180,11 +191,26 @@
   }
 
   .close-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 22px;
+    background: #00268e; /* Solid blue background */
+    border: 2px solid #ffffff; /* White top and left border */
+    border-right-color: #1f3a93; /* Darker blue right border */
+    border-bottom-color: #1f3a93; /* Darker blue bottom border */
+    color: white; /* White text */
+    font-size: 14px; /* Regular font size */
+    padding: 4px 6px; /* Padding for the button */
     cursor: pointer;
+    font-family: "MS Sans Serif", Arial, sans-serif; /* Classic Windows font */
+    box-shadow:
+      inset -1px -1px 0px 0px #808080,
+      inset 1px 1px 0px 0px #dfe0e1; /* Inner shadow for 3D effect */
+  }
+
+  .close-button:active {
+    border-color: #1f3a93; /* Darker blue border on press */
+    box-shadow:
+      inset 1px 1px 0px 0px #808080,
+      inset -1px -1px 0px 0px #dfe0e1; /* Inverted shadow for pressed effect */
+    background: #3a5dc3; /* Darker blue background on press */
   }
 
   .drag-cursor {
