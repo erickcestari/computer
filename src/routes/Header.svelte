@@ -4,7 +4,7 @@
 
 <header>
 	<div class="corner">
-		<a href="https://github.com/erickcestari/computer">
+		<a href="https://github.com/erickcestari/computer" target="_blank">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
@@ -12,8 +12,10 @@
 
 <style>
 	header {
+		display: flex;
 		position: absolute;
 		top: 0;
+		left: 0;
 		justify-content: space-between;
 	}
 
@@ -28,7 +30,6 @@
 		justify-content: center;
 		width: 100%;
 		height: 100%;
-		color: white;
 	}
 
 	.corner img {

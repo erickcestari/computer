@@ -166,7 +166,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .content {
@@ -175,7 +174,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    flex: 1;
     width: 100%;
     height: 100%;
   }
