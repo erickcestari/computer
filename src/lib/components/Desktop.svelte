@@ -1,6 +1,6 @@
 <script lang="ts">
-  import AppIcon from "./AppIcon.svelte";
-  import WindowComponent from "./Window.svelte";
+  import AppIcon from "$lib/components/AppIcon.svelte";
+  import WindowComponent from "$lib/components/Window.svelte";
 
   type Window = {
     id: number;
