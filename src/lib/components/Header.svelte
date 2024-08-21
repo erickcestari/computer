@@ -1,10 +1,11 @@
 <script>
+  import { base } from "$app/paths";
 </script>
 
 <header>
   <div class="corner">
     <a href="https://github.com/erickcestari/computer" target="_blank">
-      <img src="/assets/github.svg" alt="GitHub" />
+      <img src="{base}/assets/github.svg" alt="GitHub" />
     </a>
   </div>
 </header>

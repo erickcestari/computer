@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -9,7 +10,7 @@
 </script>
 
 <button class="app-icon" on:click={openWindow}>
-  <img src="/assets/paint.png" alt="App Icon" />
+  <img src="{base}/assets/paint.png" alt="App Icon" />
   <p>Paint</p>
 </button>
 
