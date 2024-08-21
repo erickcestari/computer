@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import paint from "$lib/images/paint.png";
 
   const dispatch = createEventDispatcher();
 
@@ -10,7 +9,7 @@
 </script>
 
 <button class="app-icon" on:click={openWindow}>
-  <img src={paint} alt="App Icon" />
+  <img src="/assets/paint.png" alt="App Icon" />
   <p>Paint</p>
 </button>
 

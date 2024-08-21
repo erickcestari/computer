@@ -41,7 +41,7 @@
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url("../lib/images/background.png");
+    background-image: url("/assets/background.png");
     box-sizing: border-box;
     margin: 0 auto;
   }
